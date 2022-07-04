@@ -1,0 +1,79 @@
+{% extends 'home_page/index.html' %}
+
+{% block account %}
+    <div class="container" style="margin-top: 6%;">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                     class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    {% if user_tg.last_name %}
+                                        <h4>{{ user_tg.first_name }} {{ user_tg.last_name }}</h4>
+                                    {% else %}
+                                        <h4>{{ user_tg.first_name }}</h4>
+                                    {% endif %}
+                                    {% if user_tg.username.isnumeric %}
+                                        <a href="https://t.me/register_account_test_bot?start={{ user_tg.user_id }}"
+                                           class="btn btn-outline-primary">Користувач в телеграмі</a>
+                                    {% else %}
+                                        <a href="https://t.me/{{ user_tg.username }}" class="btn btn-outline-primary">Користувач
+                                            в телеграмі</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Username</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {% if user_tg.username.isnumeric %}
+                                        <h6 class="mb-0">-</h6>
+                                    {% else %}
+                                        <h6 class="mb-0">{{ user_tg.username }}</h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">ID</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user_tg.user_id }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Дата реєстрації на сайті</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user_tg.created_at }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Останій раз оновлено</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user_tg.updated_at }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
