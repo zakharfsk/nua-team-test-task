@@ -7,6 +7,8 @@ from psycopg2.extras import Json
 
 class DataBase:
     def __init__(self):
+        self.db_from_env = dj_database_url.config()
+        print(self.db_from_env)
         self.conn = psycopg2.connect(
             host=os.getenv('HOST'),
             database=os.getenv('DATABASE'),
@@ -14,9 +16,8 @@ class DataBase:
             password=os.getenv('PASSWORD'),
             port=int(os.getenv('PORT'))
         )
-        self.db_from_env = dj_database_url.config()
+
         self.cur = self.conn.cursor()
-        print(self.db_from_env)
 
     def __del__(self):
         self.conn.commit()
