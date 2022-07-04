@@ -43,7 +43,7 @@ async def cmd_start(message: types.Message):
         await message.answer(
             'Привіт.\n'
             'Цей бот створений для реєстації користувачів.\n'
-            'Якщо ви хочете зареєструватися перейдіть на сайт ...'
+            'Якщо ви хочете зареєструватися перейдіть на <a href="https://nua-team-test-task.herokuapp.com">сайт</a>'
         )
 
 

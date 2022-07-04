@@ -10,11 +10,11 @@ class DataBase:
         self.db_from_env = dj_database_url.config()
         print(self.db_from_env)
         self.conn = psycopg2.connect(
-            host=os.getenv('HOST'),
-            database=os.getenv('DATABASE'),
-            user=os.getenv('USER'),
-            password=os.getenv('PASSWORD'),
-            port=int(os.getenv('PORT'))
+            host=self.db_from_env['HOST'],
+            database=self.db_from_env['NAME'],
+            user=self.db_from_env['USER'],
+            password=self.db_from_env['PASSWORD'],
+            port=self.db_from_env['PORT']
         )
 
         self.cur = self.conn.cursor()
