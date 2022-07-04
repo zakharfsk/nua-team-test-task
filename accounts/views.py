@@ -66,6 +66,7 @@ def account_page(request, username):
         'title': 'Обліковий запис',
         'username': username,
         'user_tg': user_tg,
+        'admins': User.objects.filter(is_superuser=True),
     }
     return render(request, 'accounts/account.html', context)
 
