@@ -55,7 +55,8 @@ async def get_password(message: types.Message, state: FSMContext):
     data = await state.get_data()
     db = DBUser()
     user = db.get_user(data['login'])
-    message.to_python().pop('text')
+    user_json = message.to_python()
+    user_json.pop('text')
 
     if not user:
         db.add_user(
@@ -63,7 +64,7 @@ async def get_password(message: types.Message, state: FSMContext):
             message.from_user.id,
             message.from_user.first_name,
             message.from_user.last_name,
-            message.to_python(),
+            user_json,
             message.date
         )
         await message.answer(
