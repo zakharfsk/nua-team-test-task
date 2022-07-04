@@ -15,7 +15,7 @@ load_dotenv()
 
 storage = MemoryStorage()
 
-bot: Bot = Bot(os.getenv('TOKEN'), parse_mode=types.ParseMode.HTML)
+bot: Bot = Bot(os.environ.get('TOKEN'), parse_mode=types.ParseMode.HTML)
 dp: Dispatcher = Dispatcher(bot, storage=storage)
 
 
